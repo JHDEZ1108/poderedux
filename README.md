@@ -1,8 +1,11 @@
 <h1 align="center">
 PokeRedux
 </h1>
-This is a projecto to understand how Redux works making a pokedex
-### 🤖 Guía Rápida ###
+This is a project to understand how Redux works making a pokedex
+<h3 align="center">
+🤖 Guía Rápida
+</h3>
+
 
 1.  **Clone the repository.**
 
