@@ -1,4 +1,5 @@
 import Searcher from './components/Searcher';
+import PokemonCard from './components/PokemonCard';
 import { Container } from "@mui/material"
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
       }}
     >
       <Searcher />
+      <PokemonCard />
     </Container>
   );
 }
