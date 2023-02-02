@@ -1,8 +1,8 @@
 <h1 align="center">
-Search-bar-feature
+PokeRedux
 </h1>
 This is a projecto to understand how Redux works making a pokedex
-### 🤖 Guía Rápida
+### 🤖 Guía Rápida ###
 
 1.  **Clone the repository.**
 
