@@ -1,11 +1,12 @@
 import { Box } from "@mui/material";
-import PokemonCard from "./PokemonCard";
+import PokemonCard from "../PokemonCard";
+import "./index.css"
 
 const PokemonList = ({ pokemons }) => {
   return(
     <Box className='PokemonList'>
       {pokemons.map((pokemon) => {
-        return <PokemonCard />
+        return <PokemonCard name={pokemon.name} key={pokemon.name}/>
       })}
     </Box>
   )

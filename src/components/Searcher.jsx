@@ -7,7 +7,7 @@ const Searcher = () => {
     <Stack 
       direction = 'row' 
       sx={{
-        marginTop: '30px',
+        marginTop: '60px',
         width: '80%'
       }}
     >
