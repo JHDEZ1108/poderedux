@@ -3,8 +3,11 @@ import PokemonList from './components/PokemonList';
 import { Grid } from '@mui/material';
 import Logo from './static/Pokedux.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
 import { getPokemons } from './api';
+import { setPokemons as setPokemonsActions } from './actions';
+
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -35,5 +38,14 @@ function App() {
     </Grid>
   );
 }
+//Funcion que recibe nuestro estado y retorna un objeto que son enviadas a los props del componente que se esta conectando a Redux 
+const mapStateToProps = (state) => ({
+  pokemons: state.pokemons,
+});
 
-export default App;
+//Función que recibe el Dispatcher de redux 
+const mapDispatchToProps = (dispatch) => ({
+  setPokemons: (value) => dispatch(setPokemonsActions(value))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
