@@ -3,8 +3,8 @@ import PokemonList from './components/PokemonList';
 import { Grid } from '@mui/material';
 import Logo from './static/Pokedux.svg';
 import './App.css';
-import { getPokemons, getPokemonDetails } from './api';
-import { setPokemons } from './actions';
+import { getPokemons } from './api';
+import { getPokemonsWithDetails } from './actions';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,10 +19,10 @@ function App() {
   useEffect(() =>{
     const fetchPokemons = async () => { 
       const pokemonsRes = await getPokemons();
-      const pokemonDetailed = await Promise.all(
-        pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
-      );
-      dispatch(setPokemons(pokemonDetailed));
+      // const pokemonsDetailed = await Promise.all(
+      //   pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
+      // );
+      dispatch(getPokemonsWithDetails(pokemonsRes));
     };
     
     fetchPokemons();
