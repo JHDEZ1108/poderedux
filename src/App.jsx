@@ -6,11 +6,13 @@ import './App.css';
 import { getPokemons } from './api';
 import { setPokemons as setPokemonsActions } from './actions';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-function App() {
-  const [pokemons, setPokemons] = useState([]);
+function App({ pokemons, setPokemons }) {
+  // const [pokemons, setPokemons] = useState([]);
+  
+  console.log(pokemons);
   
   useEffect(() =>{
     const fetchPokemons = async () => { 
@@ -19,6 +21,7 @@ function App() {
     };
     
     fetchPokemons();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return (
