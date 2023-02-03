@@ -3,7 +3,7 @@ import PokemonList from './components/PokemonList';
 import { Grid } from '@mui/material';
 import Logo from './static/Pokedux.svg';
 import './App.css';
-import { getPokemons } from './api';
+import { getPokemons, getPokemonDetails } from './api';
 import { setPokemons } from './actions';
 
 import { useEffect } from 'react';
@@ -19,7 +19,10 @@ function App() {
   useEffect(() =>{
     const fetchPokemons = async () => { 
       const pokemonsRes = await getPokemons();
-      dispatch(setPokemons(pokemonsRes));
+      const pokemonDetailed = await Promise.all(
+        pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
+      );
+      dispatch(setPokemons(pokemonDetailed));
     };
     
     fetchPokemons();

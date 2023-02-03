@@ -6,15 +6,16 @@ import {
   CardActionArea 
 } from "@mui/material"
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-const PokemonCard = ({name}) => {
+
+const PokemonCard = ({ name, image, abilities }) => {
   return(
     <Card sx={{ maxWidth: 345, mt: 5}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-          alt="Ditto"
+          height="150"
+          image={image}
+          alt={name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
