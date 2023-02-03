@@ -6,6 +6,7 @@ import Logo from './static/Pokedux.svg';
 import './App.css';
 import { getPokemons } from './api';
 import { getPokemonsWithDetails } from './actions';
+import { setLoading } from './actions';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,14 +16,17 @@ function App() {
   // const [pokemons, setPokemons] = useState([]);
   //console.log(pokemons);
   const pokemons = useSelector(state => state.pokemons);
+  const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
   
   useEffect(() =>{
     const fetchPokemons = async () => { 
+      dispatch(setLoading(true));
       const pokemonsRes = await getPokemons();
       // const pokemonsDetailed = await Promise.all(
       //   pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
       // );
+      dispatch(setLoading(false));
       dispatch(getPokemonsWithDetails(pokemonsRes));
     };
     
@@ -32,6 +36,7 @@ function App() {
   
   return (
     <Grid
+      container
       className="App"
       sx={{
         marginTop: '40px',
@@ -42,7 +47,17 @@ function App() {
       >
       <img className="PokeLogo" src={Logo} alt='Pokedux'/>
       <Searcher />
-      <PokemonList pokemons={pokemons}/>
+      {loading ? 
+        (<Grid 
+          item
+          sx={{
+            marginTop: '100px',
+          }}
+        >
+          <CircularProgress />
+        </Grid>) : (
+        <PokemonList pokemons={pokemons}/>
+      )}
     </Grid>
   );
 }
