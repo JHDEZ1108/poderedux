@@ -4,20 +4,22 @@ import { Grid } from '@mui/material';
 import Logo from './static/Pokedux.svg';
 import './App.css';
 import { getPokemons } from './api';
-import { setPokemons as setPokemonsActions } from './actions';
+import { setPokemons } from './actions';
 
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+// import { connect } from 'react-redux';
 
-function App({ pokemons, setPokemons }) {
+function App() {
   // const [pokemons, setPokemons] = useState([]);
-  
-  console.log(pokemons);
+  //console.log(pokemons);
+  const pokemons = useSelector(state => state.pokemons);
+  const dispatch = useDispatch();
   
   useEffect(() =>{
     const fetchPokemons = async () => { 
       const pokemonsRes = await getPokemons();
-      setPokemons(pokemonsRes);
+      dispatch(setPokemons(pokemonsRes));
     };
     
     fetchPokemons();
@@ -42,13 +44,14 @@ function App({ pokemons, setPokemons }) {
   );
 }
 //Funcion que recibe nuestro estado y retorna un objeto que son enviadas a los props del componente que se esta conectando a Redux 
-const mapStateToProps = (state) => ({
-  pokemons: state.pokemons,
-});
+// const mapStateToProps = (state) => ({
+//   pokemons: state.pokemons,
+// });
 
 //Función que recibe el Dispatcher de redux 
-const mapDispatchToProps = (dispatch) => ({
-  setPokemons: (value) => dispatch(setPokemonsActions(value))
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   setPokemons: (value) => dispatch(setPokemonsActions(value))
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
