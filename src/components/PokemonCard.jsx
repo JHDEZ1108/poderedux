@@ -13,7 +13,7 @@ const PokemonCard = ({ name, image, abilities }) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="150"
+          height="200"
           image={image}
           alt={name}
         />

@@ -1,6 +1,7 @@
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
 import { Grid } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import Logo from './static/Pokedux.svg';
 import './App.css';
 import { getPokemons } from './api';
@@ -30,8 +31,7 @@ function App() {
   }, []);
   
   return (
-    <Grid 
-      container
+    <Grid
       className="App"
       sx={{
         marginTop: '40px',
@@ -39,7 +39,7 @@ function App() {
         flexDirection: 'column',
         alignItems: 'center'
       }}
-    >
+      >
       <img className="PokeLogo" src={Logo} alt='Pokedux'/>
       <Searcher />
       <PokemonList pokemons={pokemons}/>
