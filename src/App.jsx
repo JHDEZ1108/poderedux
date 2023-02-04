@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import Logo from './static/Pokedux.svg';
 import './App.css';
-import { getPokemons } from './api';
+import { getPokemon } from './api';
 import { getPokemonsWithDetails } from './actions';
 import { setLoading } from './actions';
 
@@ -22,12 +22,12 @@ function App() {
   useEffect(() =>{
     const fetchPokemons = async () => { 
       dispatch(setLoading(true));
-      const pokemonsRes = await getPokemons();
+      const pokemonsRes = await getPokemon();
       // const pokemonsDetailed = await Promise.all(
       //   pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
       // );
-      dispatch(setLoading(false));
       dispatch(getPokemonsWithDetails(pokemonsRes));
+      dispatch(setLoading(false));
     };
     
     fetchPokemons();

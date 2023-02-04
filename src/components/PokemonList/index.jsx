@@ -3,16 +3,11 @@ import PokemonCard from "../PokemonCard";
 
 const PokemonList = ({ pokemons }) => {
   return(
-    <Grid
-      container
-      justifyContent="center"
-      spacing={{ xs: 2, md: 3 }} 
-      columns={{ xs: 4, sm: 8, md: 12 }}
-    >
+    <Grid container>
         {pokemons.map((pokemon) => {
           return (
             <Grid 
-              item xs={12} sm={4} md={3}
+              item xs={12} sm={4} md={3} lg={2}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -20,8 +15,11 @@ const PokemonList = ({ pokemons }) => {
             >
               <PokemonCard 
                 name={pokemon.name} 
-                image={pokemon.sprites.front_default} 
                 key={pokemon.name}
+                image={pokemon.sprites.front_default} 
+                types={pokemon.types}
+                id={pokemon.id}
+                favorite={pokemon.favorite}
               />
             </Grid>
           )

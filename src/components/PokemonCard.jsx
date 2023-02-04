@@ -5,11 +5,20 @@ import {
   CardContent,
   CardActionArea 
 } from "@mui/material"
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarButton from "./StarButton"
+import { useDispatch } from "react-redux";
+import { setFavorite } from "../actions";
 
-const PokemonCard = ({ name, image, abilities }) => {
+const PokemonCard = ({ name, image, types, id, favorite }) => {
+  const dispatch = useDispatch();
+  const typesString = types.map(elem => elem.type.name).join(', ')
+  
+  const handleOnFavorite = () => {
+    dispatch(setFavorite({ pokemonId: id }))
+  }
+  
   return(
-    <Card sx={{ maxWidth: 345, mt: 5}}>
+    <Card sx={{ maxWidth: 400, mt: 5}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -22,12 +31,11 @@ const PokemonCard = ({ name, image, abilities }) => {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            <b>Type: </b>{typesString}
           </Typography>
-          <StarOutlineIcon />
         </CardContent>
       </CardActionArea>
+      <StarButton isFavorite={favorite} onClick={handleOnFavorite}/>
     </Card>
   )
 }
