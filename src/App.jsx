@@ -4,40 +4,22 @@ import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import Logo from './static/Pokedux.svg';
 import './App.css';
-import { getPokemon } from './api';
-import { getPokemonsWithDetails } from './actions';
-import { setLoading } from './actions';
-
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-// import { connect } from 'react-redux';
+import { fetchPokemonsWithDetails } from './slices/dataSlice';
+
 
 function App() {
-  // const [pokemons, setPokemons] = useState([]);
-  //console.log(pokemons);
-  const pokemons = useSelector((state) =>
-    state.getIn(['data', 'pokemons'], shallowEqual)).toJS();
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
 
-  const loading = useSelector((state) => 
-    state.getIn(['ui', 'loading']));
-    
+  const loading = useSelector((state) => state.ui.loading);
+
   const dispatch = useDispatch();
   
-  useEffect(() =>{
-    const fetchPokemons = async () => { 
-      dispatch(setLoading(true));
-      const pokemonsRes = await getPokemon();
-      // const pokemonsDetailed = await Promise.all(
-      //   pokemonsRes.map(pokemon => getPokemonDetails(pokemon))
-      // );
-      dispatch(getPokemonsWithDetails(pokemonsRes));
-      dispatch(setLoading(false));
-    };
-    
-    fetchPokemons();
+  useEffect(() => {
+    dispatch(fetchPokemonsWithDetails());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
   return (
     <Grid
       container
