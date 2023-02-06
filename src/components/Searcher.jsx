@@ -1,8 +1,15 @@
 import { Stack, TextField, IconButton } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../slices/dataSlice';
 
 const Searcher = () => {
+  const dispatch = useDispatch();
+  
+  const handleOnChange = (e) => {
+    dispatch(setFilter(e.target.value));
+  }
+  
   return(
     <Stack 
       direction = 'row' 
@@ -15,6 +22,7 @@ const Searcher = () => {
         label="Search" variant="outlined" 
         placeholder="Search pokemon..."
         size="small"
+        onChange={handleOnChange}
         // inputProps={{ style: { color: '#E7EBF0' } }}
         sx={{
           width: '100%',
@@ -35,6 +43,7 @@ const Searcher = () => {
           left: '-50px',
           //color:'#E7EBF0'
         }}
+        onClick={handleOnChange}
       >
         <SearchIcon />
       </IconButton>
