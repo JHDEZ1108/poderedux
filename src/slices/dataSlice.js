@@ -28,6 +28,12 @@ export const dataSlice = createSlice({
       state.pokemons = action.payload;
       state.pokemonsFiltered = action.payload;
     },
+    setFilter: (state, action) => {
+      const pokemonsFiltered = state
+          .pokemons
+          .filter( pokemon => pokemon.name.includes( action.payload ) )
+      state.pokemonsFiltered = pokemonsFiltered;
+    },
     setFavorite: (state, action) => {
       // encontramos el indice del pokemon que viene del payload como pokemonId
       const pokemonIndex = state.pokemons.findIndex(
@@ -40,13 +46,7 @@ export const dataSlice = createSlice({
           state.pokemons[pokemonIndex].favorite = !isFavorite
           state.pokemonsFiltered[pokemonIndex].favorite = !isFavorite
       }
-    },
-    setFilter: (state, action) => {
-      const pokemonsFiltered = state
-          .pokemons
-          .filter( pokemon => pokemon.name.includes( action.payload ) )
-      state.pokemonsFiltered = pokemonsFiltered;
-  }
+    }
   },
 });
 

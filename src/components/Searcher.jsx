@@ -7,7 +7,7 @@ const Searcher = () => {
   const dispatch = useDispatch();
   
   const handleOnChange = (e) => {
-    dispatch(setFilter(e.target.value));
+    dispatch(setFilter(e));
   }
   
   return(
@@ -22,7 +22,7 @@ const Searcher = () => {
         label="Search" variant="outlined" 
         placeholder="Search pokemon..."
         size="small"
-        onChange={handleOnChange}
+        onChange={(e)=>handleOnChange(e.target.value)}
         // inputProps={{ style: { color: '#E7EBF0' } }}
         sx={{
           width: '100%',
@@ -33,7 +33,6 @@ const Searcher = () => {
           "& .MuiFormLabel-root.Mui-focused": {
               //color: '#E7EBF0'
           },
-          border: '1px solid #E7EBF0', 
           borderRadius: 1
         }}
       />
@@ -43,7 +42,7 @@ const Searcher = () => {
           left: '-50px',
           //color:'#E7EBF0'
         }}
-        onClick={handleOnChange}
+        onClick={(e)=>handleOnChange(e.target.value)}
       >
         <SearchIcon />
       </IconButton>
