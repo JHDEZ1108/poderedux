@@ -1,19 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  loading: false,
+  mode: "light",
+  error: null,
+  isLoading: false
 };
 
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    setLoading: (state, action) => {
-      state.loading = action.payload;
+    setMode: (state) => {
+      state.mode = state.mode === "light" ? "dark" : "light";
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload
+    },
+    clearError: (state) => {
+      state.error = null
+    },
+    clearAll: (state) => {
+      state.isLoading = false
+      state.error = null
+    }
   },
 });
 
-export const { setLoading } = uiSlice.actions;
+export const { setLoading, setMode, setError, clearError, clearAll } = uiSlice.actions;
 
 export default uiSlice.reducer;
