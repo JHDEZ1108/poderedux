@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 
 import Searcher from '../components/Searcher';
+import Navbar from '../components/Navbar';
 import PokemonList from '../components/PokemonList';
 import CircularProgress from '@mui/material/CircularProgress';
 import { fetchPokemonsWithDetails } from '../slices/dataSlice';
@@ -21,15 +22,15 @@ export const Home = () => {
   }, []);
   return (
     <Grid
-    container
-    className="App"
-    sx={{
-      marginTop: '40px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }}
+      container
+      className="App"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      }}
     >
+    <Navbar />
     <img className="PokeLogo" src={Logo} alt='Pokedux'/>
     <Searcher />
     {loading ? 
