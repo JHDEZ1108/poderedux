@@ -11,8 +11,7 @@ import Logo from '../static/Pokedux.svg';
 
 export const Home = () => {
   const pokemons = useSelector((state) => state.data.pokemonsFiltered, shallowEqual);
-
-  const loading = useSelector((state) => state.ui.loading);
+  const loading = useSelector((state) => state.ui.isLoading, shallowEqual);
 
   const dispatch = useDispatch();
   
@@ -42,7 +41,7 @@ export const Home = () => {
       >
         <CircularProgress />
       </Grid>) : (
-      <PokemonList pokemons={pokemons}/>
+      <PokemonList pokemons={pokemons} search/>
     )}
   </Grid>
   );
