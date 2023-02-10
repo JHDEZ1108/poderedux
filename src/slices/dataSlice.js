@@ -4,7 +4,7 @@ import { setLoading } from './uiSlice';
 
 const initialState = {
   pokemons: [],
-  pokemonsFiltered: []
+  pokemonsFiltered: [],
 };
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
@@ -19,7 +19,6 @@ export const fetchPokemonsWithDetails = createAsyncThunk(
     dispatch(setLoading(false));
   }
 );
-
 export const dataSlice = createSlice({
   name: 'data',
   initialState,
@@ -51,5 +50,4 @@ export const dataSlice = createSlice({
 });
 
 export const { setFavorite, setPokemons, setFilter } = dataSlice.actions;
-
 export default dataSlice.reducer;

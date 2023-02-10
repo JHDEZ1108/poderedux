@@ -1,26 +1,31 @@
-import { Grid } from "@mui/material";
-import PokemonCard from "../PokemonCard";
+import { Grid, Stack } from "@mui/material";
+import { PokemonCard } from "../PokemonCard";
 
-const PokemonList = ({ pokemons }) => {
+export function PokemonList({ pokemons, page, byPage }){
   return(
     <Grid container>
-        {pokemons.map((pokemon) => {
+            {pokemons.slice(
+              (page - 1) * byPage,
+              (page - 1) * byPage + byPage
+            ).map((pokemon) => {
           return (
             <Grid 
-              item xs={12} sm={4} md={3} lg={2}
+              item xs={6} md={4} lg={3}
               display="flex"
               justifyContent="center"
               alignItems="center"
               key={pokemon.name}
             >
-              <PokemonCard 
-                name={pokemon.name} 
-                key={pokemon.name}
-                image={pokemon.sprites.front_default} 
-                types={pokemon.types}
-                id={pokemon.id}
-                favorite={pokemon.favorite}
-              />
+              <Stack>
+                <PokemonCard 
+                  name={pokemon.name} 
+                  key={pokemon.name}
+                  image={pokemon.sprites.front_default} 
+                  types={pokemon.types}
+                  id={pokemon.id}
+                  favorite={pokemon.favorite}
+                />
+              </Stack>
             </Grid>
           )
         })}
@@ -31,5 +36,3 @@ const PokemonList = ({ pokemons }) => {
 PokemonList.defaultProps = {
   pokemons: Array(10).fill('')
 }
-
-export default PokemonList;

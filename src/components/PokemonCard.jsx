@@ -9,7 +9,7 @@ import StarButton from "./StarButton"
 import { useDispatch } from "react-redux";
 import { setFavorite } from "../slices/dataSlice";
 
-const PokemonCard = ({ name, image, types, id, favorite }) => {
+export function PokemonCard({ name, image, types, id, favorite }) {
   const dispatch = useDispatch();
   const typesString = types.map(elem => elem.type.name).join(', ')
   
@@ -28,10 +28,10 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {name}
+            {name.toUpperCase()}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <b>Type: </b>{typesString}
+            <b>Type: </b>{typesString.toUpperCase()}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -39,4 +39,3 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
     </Card>
   )
 }
-export default PokemonCard;
