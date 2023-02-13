@@ -6,9 +6,9 @@ const StarButton = ({ isFavorite, onClick }) => {
   return (
     <IconButton onClick={onClick}>
       {isFavorite ? (
-        <FavoriteIcon />
+        <FavoriteIcon style={{ fontSize: '25px' }}/>
         ) : (
-        <FavoriteBorderIcon/>
+        <FavoriteBorderIcon style={{ fontSize: '25px' }}/>
       )}
     </IconButton>
   )
