@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react'
 
 import Searcher from '../components/Searcher';
 import Navbar from '../components/Navbar';
+import { Spinner } from '../components/Spinner/Spinner';
 
 import { PokemonList } from '../components/PokemonList';
-import CircularProgress from '@mui/material/CircularProgress';
 import { fetchPokemonsWithDetails } from '../slices/dataSlice';
 import { PaginationComponent } from '../components/PaginationComponent';
 import Logo from '../static/Pokedux.svg';
@@ -53,12 +53,8 @@ export const Home = () => {
       <Stack sx={{ maxWidth: '1500px', margin: '0 auto'}}>
         {
         loading ? (
-          <Stack>
-            <CircularProgress 
-              size={80} 
-              thickness={5}
-              color="secondary"
-              sx={{padding: '2rem auto', margin: 'auto'}}/>
+          <Stack sx={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Spinner />
           </Stack>
         ) : (
           <PokemonList pokemons={pokemons} page={page} byPage={byPage}/>
