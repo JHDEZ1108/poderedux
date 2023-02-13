@@ -1,4 +1,5 @@
 import { 
+  Stack,
   Card, 
   CardMedia, 
   Typography, 
@@ -28,14 +29,16 @@ export function PokemonCard({ name, image, types, id, favorite }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {name.toUpperCase()}
+            {name.charAt(0).toUpperCase() + name.slice(1)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <b>Type: </b>{typesString.toUpperCase()}
+            <b>Type: </b> {typesString.toUpperCase()}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <StarButton isFavorite={favorite} onClick={handleOnFavorite}/>
+      <Stack sx={{ display: 'flex', alignItems: 'center' }}>
+        <StarButton isFavorite={favorite} onClick={handleOnFavorite}/>
+      </Stack>
     </Card>
   )
 }

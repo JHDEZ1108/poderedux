@@ -34,11 +34,9 @@ export const Home = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '100%',
     }}>
       <Navbar />
       <Stack sx={{
-        maxWidth: '400px',
         margin: 'auto',
         padding: '1rem 0px'
       }}>
@@ -46,7 +44,7 @@ export const Home = () => {
       </Stack>
       <Stack sx={{
         alignItems: 'center',
-        width: '100%',
+        width: '500px',
       }}>
         <Searcher/>
       </Stack>
@@ -56,7 +54,8 @@ export const Home = () => {
       }}>
         <PaginationComponent page={page} setPage={setPage} maxPages={maxPages}/>
       </Stack>
-      {
+      <Stack sx={{ maxWidth: '1500px'}}>
+        {
         loading ? (
           <Stack xs={12}>
             <CircularProgress 
@@ -67,8 +66,9 @@ export const Home = () => {
           </Stack>
         ) : (
           <PokemonList pokemons={pokemons} page={page} byPage={byPage}/>
-        )
-      }
+          )
+        }
+      </Stack>
       <Stack sx={{
         marginBottom: '3rem',
         alignItems: 'center'

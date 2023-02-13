@@ -20,7 +20,11 @@ export function PokemonList({ pokemons, page, byPage }){
                 <PokemonCard 
                   name={pokemon.name} 
                   key={pokemon.name}
-                  image={pokemon.sprites.front_default} 
+                  image={            
+                    pokemon.sprites.other['official-artwork'].front_default ||
+                    pokemon.sprites.other.home.front_default ||
+                    pokemon.sprites.front_shiny ||
+                    pokemon.sprites.front_default} 
                   types={pokemon.types}
                   id={pokemon.id}
                   favorite={pokemon.favorite}
