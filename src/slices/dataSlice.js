@@ -28,22 +28,23 @@ export const dataSlice = createSlice({
       state.pokemonsFiltered = action.payload;
     },
     setFilter: (state, action) => {
-      const pokemonsFiltered = state
-          .pokemons
-          .filter( pokemon => pokemon.name.includes( action.payload ) )
-      state.pokemonsFiltered = pokemonsFiltered;
+      state.pokemonsFiltered = state.pokemons.filter(pokemon => {
+        return (pokemon.name.includes(action.payload) && (action.payload !== 'favorites' || pokemon.favorite))
+      });
     },
     setFavorite: (state, action) => {
-      // encontramos el indice del pokemon que viene del payload como pokemonId
-      const pokemonIndex = state.pokemons.findIndex(
-          (pokemon) => (pokemon.id === action.payload.pokemonId))
-      // en caso de encontrar el index, vamos a cambiar el statado favorite
+      // encontramos el índice del pokemon en "pokemons"
+      const pokemonIndex = state.pokemons.findIndex(pokemon => pokemon.id === action.payload.pokemonId);
+      // en caso de encontrar el índice, verificamos si existe en "pokemonsFiltered"
       if (pokemonIndex >= 0) {
-          // guardamos el valor de favorite del pokemon encontrado
+        const filteredIndex = state.pokemonsFiltered.findIndex(pokemon => pokemon.id === action.payload.pokemonId);
+        if (filteredIndex >= 0) {
+          // guardamos el valor de "favorite" del pokemon encontrado
           const isFavorite = state.pokemons[pokemonIndex].favorite;
-          // modificamos el valor de favorito en pokemos y pokemosFiltered
-          state.pokemons[pokemonIndex].favorite = !isFavorite
-          state.pokemonsFiltered[pokemonIndex].favorite = !isFavorite
+          // modificamos el valor de "favorite" en "pokemons" y "pokemonsFiltered"
+          state.pokemons[pokemonIndex].favorite = !isFavorite;
+          state.pokemonsFiltered[filteredIndex].favorite = !isFavorite;
+        }
       }
     }
   },
