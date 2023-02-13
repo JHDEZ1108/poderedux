@@ -10,11 +10,12 @@ export function PokemonList({ pokemons, page, byPage }){
             ).map((pokemon) => {
           return (
             <Grid 
-              item xs={6} md={4} lg={3}
+              item xs={12} md={6} lg={4} xl={3}
               display="flex"
               justifyContent="center"
               alignItems="center"
               key={pokemon.name}
+              sx={{margin: '0 auto'}}
             >
               <Stack>
                 <PokemonCard 

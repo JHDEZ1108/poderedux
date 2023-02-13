@@ -19,11 +19,10 @@ export function PokemonCard({ name, image, types, id, favorite }) {
   }
   
   return(
-    <Card sx={{ maxWidth: 400, mt: 5}}>
+    <Card sx={{ m: 5 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
           image={image}
           alt={name}
         />

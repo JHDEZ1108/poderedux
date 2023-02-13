@@ -1,5 +1,5 @@
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Stack, Grid } from '@mui/material'
+import { Stack } from '@mui/material'
 
 import { useEffect, useState } from 'react'
 
@@ -29,13 +29,10 @@ export const Home = () => {
   const maxPages = Math.ceil(pokemons.length / byPage);
   
   return (
-    <Grid container 
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    }}>
-      <Navbar />
+    <Stack>
+      <Stack sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Navbar />
+      </Stack>
       <Stack sx={{
         margin: 'auto',
         padding: '1rem 0px'
@@ -43,8 +40,7 @@ export const Home = () => {
         <img className="PokeLogo" src={Logo} alt='Pokedux'/>
       </Stack>
       <Stack sx={{
-        alignItems: 'center',
-        width: '500px',
+        alignItems: 'center'
       }}>
         <Searcher/>
       </Stack>
@@ -54,10 +50,10 @@ export const Home = () => {
       }}>
         <PaginationComponent page={page} setPage={setPage} maxPages={maxPages}/>
       </Stack>
-      <Stack sx={{ maxWidth: '1500px'}}>
+      <Stack sx={{ maxWidth: '1500px', margin: '0 auto'}}>
         {
         loading ? (
-          <Stack xs={12}>
+          <Stack>
             <CircularProgress 
               size={80} 
               thickness={5}
@@ -71,10 +67,9 @@ export const Home = () => {
       </Stack>
       <Stack sx={{
         marginBottom: '3rem',
-        alignItems: 'center'
       }}>
         <PaginationComponent page={page} setPage={setPage} maxPages={maxPages}/>
       </Stack>
-    </Grid>
+    </Stack>
   );
 }
