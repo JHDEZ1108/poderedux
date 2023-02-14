@@ -26,12 +26,8 @@ const Searcher = () => {
         placeholder="Search pokemon..."
         size="small"
         onChange={(e)=>handleOnChange(e.target.value)}
-        // inputProps={{ style: { color: '#E7EBF0' } }}
         sx={{
           width: '100%',
-          "& .MuiFormLabel-root": {
-            //color: primaryMain
-          },
           "& .MuiFormLabel-root.Mui-focused": {
             color: primaryMain
           },

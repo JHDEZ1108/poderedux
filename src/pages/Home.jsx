@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 import Searcher from '../components/Searcher';
 import Navbar from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import { Spinner } from '../components/Spinner/Spinner';
 
 import { PokemonList } from '../components/PokemonList';
@@ -68,6 +69,9 @@ export const Home = () => {
         marginBottom: '3rem',
       }}>
         <PaginationComponent page={page} setPage={setPage} maxPages={maxPages}/>
+      </Stack>
+      <Stack sx={{ mt:3 }}>
+        <Footer />
       </Stack>
     </Stack>
   );

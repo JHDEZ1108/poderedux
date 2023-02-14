@@ -27,6 +27,12 @@ export const colorTokens = {
     800: "#6561E4",
     900: "#001519",
   },
+  socialMedia:{
+    111: "#dc2626",
+    222: "#2563eb",
+    333: "#2563eb",
+    444: "#3cab91",
+  }
 };
 
 // mui theme settings
@@ -53,6 +59,12 @@ export const themeSettings = (mode) => {
               default: colorTokens.grey[900],
               alt: colorTokens.grey[800],
             },
+            socialMedia: {
+              instagramColor: colorTokens.socialMedia[111],
+              linkedInColor: colorTokens.socialMedia[222],
+              twitterColor: colorTokens.socialMedia[333],
+              gitHubColor: colorTokens.socialMedia[444]
+            }
           }
         : {
             // palette values for light mode
@@ -71,8 +83,13 @@ export const themeSettings = (mode) => {
             background: {
               default: colorTokens.grey[10],
               alt: colorTokens.grey[0],
-              
             },
+            socialMedia: {
+              instagramColor: colorTokens.socialMedia[111],
+              linkedInColor: colorTokens.socialMedia[222],
+              twitterColor: colorTokens.socialMedia[333],
+              gitHubColor: colorTokens.socialMedia[444]
+            }
           }),
     },
     typography: {
