@@ -1,5 +1,5 @@
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { Stack } from '@mui/material'
+import { Stack, useTheme } from '@mui/material'
 
 import { useEffect, useState } from 'react'
 
@@ -18,6 +18,9 @@ export const Home = () => {
   const [ byPage, setByPage ] = useState(24)
   const pokemons = useSelector((state) => state.data.pokemonsFiltered, shallowEqual);
   const loading = useSelector((state) => state.ui.isLoading, shallowEqual);
+  
+  const theme = useTheme();
+  const alt = theme.palette.background.alt;
 
   const dispatch = useDispatch();
   
@@ -29,7 +32,7 @@ export const Home = () => {
   const maxPages = Math.ceil(pokemons.length / byPage);
   
   return (
-    <Stack>
+    <Stack sx={{ bacgroundColor: alt }}>
       <Stack sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <Navbar />
       </Stack>

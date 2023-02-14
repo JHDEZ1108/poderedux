@@ -9,20 +9,35 @@ import { ReactComponent as Logo} from "../../static/Logo_Final.svg"
 const Navbar = () => {
   
   const theme = useTheme();
-  const alt = theme.palette.background.alt;
+
+  const defaultB = theme.palette.background.default;
   const primaryMain = theme.palette.primary.main;
+  const mode = theme.palette.mode;
+  let boxShadowColor;
+  
+  if (mode === 'light') {
+    boxShadowColor = '#BFBFBF';
+  } else {
+    boxShadowColor = '#3F3F3F';
+  }
   
   const dispatch = useDispatch();
   
   return(
-    <Box backgroundColor={alt} sx={{ boxShadow: 4, width:"100%", mb:"3rem"}}>
+    <Box 
+      sx={{
+        boxShadow: `0px 0px 10px ${boxShadowColor}`,
+        backgroundColor: defaultB, 
+        width:"100%", 
+        mb:"3rem"
+      }}>
       <FlexBetween className="navbar" padding="1rem 6%">
         <FlexBetween gap="1.75rem">
           <Logo width={30} fill={primaryMain} cursor="pointer" />
         </FlexBetween>
         <IconButton
         sx={{ fontSize: "25px" }}
-        onClick={() => dispatch(setMode(), console.log(theme.palette.mode))}
+        onClick={() => dispatch(setMode())}
       >
         {theme.palette.mode === "dark" ? (
           <DarkMode sx={{ color: primaryMain, fontSize: "25px" }} />

@@ -1,6 +1,7 @@
 import { 
   Stack,
-  Card, 
+  Card,
+  useTheme,
   CardMedia, 
   Typography, 
   CardContent,
@@ -18,8 +19,19 @@ export function PokemonCard({ name, image, types, id, favorite }) {
     dispatch(setFavorite({ pokemonId: id }))
   }
   
+  const theme = useTheme();
+  const defaultB = theme.palette.background.default;
+  const mode = theme.palette.mode;
+  let boxShadowColor;
+  
+  if (mode === 'light') {
+    boxShadowColor = '#BFBFBF';
+  } else {
+    boxShadowColor = '#3F3F3F';
+  }
+  
   return(
-    <Card sx={{ m: 5 }}>
+    <Card sx={{ backgroundColor: defaultB, m: 5, boxShadow: `0px 0px 10px ${boxShadowColor}` }}>
       <CardActionArea>
         <CardMedia
           component="img"

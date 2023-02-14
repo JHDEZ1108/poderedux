@@ -1,4 +1,4 @@
-import { Stack, TextField, IconButton } from "@mui/material";
+import { Stack, TextField, IconButton, useTheme } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../slices/dataSlice';
@@ -9,6 +9,9 @@ const Searcher = () => {
   const handleOnChange = (e) => {
     dispatch(setFilter(e));
   }
+  
+  const theme = useTheme();
+  const primaryMain = theme.palette.primary.main;
   
   return(
     <Stack 
@@ -26,14 +29,29 @@ const Searcher = () => {
         // inputProps={{ style: { color: '#E7EBF0' } }}
         sx={{
           width: '100%',
-          //backgroundColor: '#132F4C',
           "& .MuiFormLabel-root": {
-            //color: '#E7EBF0'
+            //color: primaryMain
           },
           "& .MuiFormLabel-root.Mui-focused": {
-              //color: '#E7EBF0'
+            color: primaryMain
           },
-          borderRadius: 1
+          borderRadius: 1,
+          "&:hover": {
+            "& .MuiFormLabel-root.Mui-focused": {
+              color: primaryMain
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: primaryMain
+            }
+          },
+          "&.Mui-focused:hover": {
+            "& .MuiFormLabel-root": {
+              color: primaryMain
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: primaryMain
+            }
+          }
         }}
       />
       <IconButton
