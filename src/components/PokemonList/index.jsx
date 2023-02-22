@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 import { PokemonCard } from "../PokemonCard";
 
 export function PokemonList({ pokemons, page, byPage }){
@@ -17,18 +17,20 @@ export function PokemonList({ pokemons, page, byPage }){
               key={pokemon.name}
               sx={{margin: '0 auto'}}
             >
-              <PokemonCard 
-                name={pokemon.name} 
-                key={pokemon.name}
-                image={            
-                  pokemon.sprites.other['official-artwork'].front_default ||
-                  pokemon.sprites.other.home.front_default ||
-                  pokemon.sprites.front_shiny ||
-                  pokemon.sprites.front_default} 
-                types={pokemon.types}
-                id={pokemon.id}
-                favorite={pokemon.favorite}
-              />
+              <Stack>
+                <PokemonCard 
+                  name={pokemon.name} 
+                  key={pokemon.name}
+                  image={            
+                    pokemon.sprites.other['official-artwork'].front_default ||
+                    pokemon.sprites.other.home.front_default ||
+                    pokemon.sprites.front_shiny ||
+                    pokemon.sprites.front_default} 
+                  types={pokemon.types}
+                  id={pokemon.id}
+                  favorite={pokemon.favorite}
+                />
+              </Stack>
             </Grid>
           )
         })}
