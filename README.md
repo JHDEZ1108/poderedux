@@ -2,6 +2,9 @@
 PokeRedux
 </h1>
 This is a project to understand how Redux works making a pokedex
+
+### Demo: https://pokedux-es.netlify.app
+--------
 <h3 align="center">
 🤖 Guía Rápida
 </h3>

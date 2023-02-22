@@ -7,7 +7,6 @@ import { useTheme } from '@mui/material';
 export function PaginationComponent({ page, setPage, maxPages}) {
 
     const theme = useTheme();
-    const primaryLight = theme.palette.primary.light;
     const primaryMain = theme.palette.primary.main;
     
     const handleChangePage = (event, value) =>{
@@ -31,14 +30,14 @@ export function PaginationComponent({ page, setPage, maxPages}) {
             onChange={handleChangePage} 
             sx={{
                 '& .MuiPaginationItem-page.Mui-selected': {
-                    backgroundColor: primaryLight,
-                    color: primaryMain,
+                    backgroundColor: primaryMain,
+                    color: "#fff",
                     fontWeight: 'bold',
                 },
                 '& .MuiPaginationItem-root:hover': {
-                    color: primaryMain,
+                    color: "#fff",
                     fontWeight: 'bold',
-                    backgroundColor: primaryLight,
+                    backgroundColor: primaryMain,
                     
                 }
             }}
