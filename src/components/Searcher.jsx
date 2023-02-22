@@ -7,7 +7,7 @@ const Searcher = () => {
   const dispatch = useDispatch();
   
   const handleOnChange = (e) => {
-    dispatch(setFilter(e));
+    dispatch(setFilter(e.toLowerCase()));
   }
   
   const theme = useTheme();
@@ -15,17 +15,18 @@ const Searcher = () => {
   
   return(
     <Stack 
-      direction = 'row' 
+      direction='row' 
       sx={{
         marginTop: '60px',
         width: '80%'
       }}
     >
       <TextField 
-        label="Search" variant="outlined" 
+        label="Search" 
+        variant="outlined" 
         placeholder="Search pokemon..."
         size="small"
-        onChange={(e)=>handleOnChange(e.target.value)}
+        onChange={(e) => handleOnChange(e.target.value)}
         sx={{
           width: '100%',
           "& .MuiFormLabel-root.Mui-focused": {
@@ -54,9 +55,8 @@ const Searcher = () => {
         size="small"
         sx={{
           left: '-50px',
-          //color:'#E7EBF0'
         }}
-        onClick={(e)=>handleOnChange(e.target.value)}
+        onClick={(e) => handleOnChange(e.target.value)}
       >
         <SearchIcon />
       </IconButton>
